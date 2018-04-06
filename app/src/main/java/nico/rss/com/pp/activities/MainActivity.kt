@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
 import nico.rss.com.pp.R
@@ -20,8 +22,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private var adapter: RecyclerView.Adapter<*>? = null
     private var arrayNews: ArrayList<Item>? = ArrayList()
+
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
+    @BindView(R.id.progress_bar)
+    lateinit var progress: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,10 +53,11 @@ class MainActivity : AppCompatActivity() {
                     arrayNews?.addAll(kk.channel?.items!!)
                     adapter!!.notifyDataSetChanged()
                 }
+                progress.visibility=View.GONE
             }
 
             override fun onFailure(call: Call<RSS>?, t: Throwable?) {
-
+                progress.visibility=View.GONE
                 Log.d("error", "error ${t.toString()}")
 
             }
