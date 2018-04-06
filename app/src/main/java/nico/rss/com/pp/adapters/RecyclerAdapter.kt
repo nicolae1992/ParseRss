@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import butterknife.BindView
+import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 import nico.rss.com.pp.R
@@ -26,19 +28,22 @@ class RecyclerAdapter(private val news: ArrayList<Item>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
         val item = news[position]
-        holder.titleNews.text = item.title
+        holder.title.text = item.title
         Picasso.get().load(item.enclosure!!.url).into(holder.imageNews)
 
     }
 
     class NewsHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
-        private var view: View = v
-        var imageNews: ImageView
-        var titleNews: TextView
+        //private var view: View = v
+        //  var imageNews: ImageView
+        //var titleNews: TextView
+        @BindView(R.id.tv_title)
+        lateinit var title: TextView
+        @BindView(R.id.iv_news)
+        lateinit var imageNews: ImageView
 
         init {
-            titleNews = view.tv_title
-            imageNews = view.iv_news
+            ButterKnife.bind(this, v)
         }
 
         override fun onClick(v: View?) {
