@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<RSS> {
             override fun onResponse(call: Call<RSS>?, response: Response<RSS>?) {
                 val kk = response!!.body()
-                // Log.d("body", "body-200OK")
                 if (kk != null) {
                     arrayNews?.addAll(kk.channel?.items!!)
                     adapter!!.notifyDataSetChanged()
@@ -77,8 +76,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<RSS>?, t: Throwable?) {
                 progress.visibility = View.GONE
-                Log.d("error", "error ${t.toString()}")
-
             }
 
         })
