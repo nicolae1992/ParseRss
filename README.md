@@ -1,7 +1,8 @@
-#Parser News
+##Parser News
 This app show last news from france, this project is written in the language Kotlin and parse information RSS XML
-#How to
-####import
+##How to
+import
+
 Use library [Retrofit2](http://square.github.io/retrofit/) ,so I added the dependency for request http(s):
 ```Gradle
 dependencies {
@@ -15,7 +16,7 @@ dependencies {
   implementation 'com.squareup.retrofit2:converter-simplexml:2.3.0'
 }
 ```
-####Use:
+##Use:
 ```kotlin
 import retrofit2.Retrofit
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
