@@ -1,6 +1,6 @@
-#**Parser News**
+#Parser News
 This app show last news from france, this project is written in the language Kotlin and parse information RSS XML
-#**How to**
+#How to
 ####import
 Use library [Retrofit2](http://square.github.io/retrofit/) ,so I added the dependency for request http(s):
 ```Gradle
@@ -59,4 +59,9 @@ private fun getNews() {
         })
     }
 ```
+## Sample app
+I wrote a simple app that shows latest News 
 
+<img src="https://github.com/nicolae1992/ParseRss/blob/master/screen/Screenshot_20180411-193058.png" width="30%" height="30%">
+<img src="https://github.com/nicolae1992/ParseRss/blob/master/screen/Screenshot_20180411-193103.png" width="30%" height="30%">
+<img src="https://github.com/nicolae1992/ParseRss/blob/master/screen/Screenshot_20180411-193228.png" width="30%" height="30%">
