@@ -9,13 +9,14 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 import nico.rss.com.pp.R
 import nico.rss.com.pp.models.Item
-import nico.rss.com.pp.models.RSS
+
 
 class RecyclerAdapter(private val news: ArrayList<Item>) : RecyclerView.Adapter<RecyclerAdapter.NewsHolder>() {
-
+    companion object {
+        var clickListener: ItemClickListener? = null
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
         val context = parent.context
@@ -28,7 +29,8 @@ class RecyclerAdapter(private val news: ArrayList<Item>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
         val item = news[position]
-        holder.title.text = item.title
+        holder.mTvTitle.text = item.title
+        holder.mTvDescription.text = item.description
         Picasso.get().load(item.enclosure!!.url).into(holder.imageNews)
 
     }
@@ -37,18 +39,32 @@ class RecyclerAdapter(private val news: ArrayList<Item>) : RecyclerView.Adapter<
         //private var view: View = v
         //  var imageNews: ImageView
         //var titleNews: TextView
+
+
         @BindView(R.id.tv_title)
-        lateinit var title: TextView
+        lateinit var mTvTitle: TextView
+        @BindView(R.id.tv_description)
+        lateinit var mTvDescription: TextView
         @BindView(R.id.iv_news)
         lateinit var imageNews: ImageView
 
         init {
             ButterKnife.bind(this, v)
+            v.setOnClickListener(this)
         }
 
         override fun onClick(v: View?) {
+            if (clickListener != null) clickListener!!.onClick(adapterPosition)
         }
 
+    }
+
+    interface ItemClickListener {
+        fun onClick( position: Int)
+    }
+
+    fun setClickListener(itemClickListener: ItemClickListener) {
+        clickListener = itemClickListener
     }
 
 }

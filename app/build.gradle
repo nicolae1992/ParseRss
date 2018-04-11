@@ -39,17 +39,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation ('com.squareup.retrofit2:converter-simplexml:2.3.0')
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation('com.squareup.retrofit2:converter-simplexml:2.3.0')
             {
                 exclude group: 'xpp3', module: 'xpp3'
                 exclude group: 'stax', module: 'stax-api'
                 exclude group: 'stax', module: 'stax'
             }
-    implementation ('com.squareup.retrofit2:retrofit:2.4.0')/*{
-            // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
-            exclude module: 'okhttp'
-
-    }*/
+    implementation('com.squareup.retrofit2:retrofit:2.4.0')
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     compile 'com.jakewharton:butterknife:8.8.1'
